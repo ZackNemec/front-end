@@ -24,7 +24,7 @@ const Login = () => {
       .post("/api/auth/login", login)
       .then((res) => {
         console.log(res);
-        window.localStorage.setItem("token", res.data.payload);
+        window.localStorage.setItem("token", res.data.token);
         history.push(`/userProfile/${res.data.user_id}`);
       })
       .catch((err) => console.log(err));
