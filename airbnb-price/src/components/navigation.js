@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Navbar, Button } from "reactstrap";
+import { Navbar, Button, ButtonGroup } from "reactstrap";
 
 const Navigation = () => {
   return (
@@ -15,16 +15,17 @@ const Navigation = () => {
 
         {/* Link to listings */}
         <Button>Listings</Button>
+        <ButtonGroup>
+          <Link to={"/login"}>
+            {/*Link to Sign In page */}
+            <Button>Sign In</Button>
+          </Link>
 
-        <Link to={"/login"}>
-          {/*Link to Sign In page */}
-          <Button>Sign In</Button>
-        </Link>
-
-        <Link to={"/register"}>
-          {/* Link to register page*/}
-          <Button>Get Started</Button>
-        </Link>
+          <Link to={"/register"}>
+            {/* Link to register page*/}
+            <Button>Get Started</Button>
+          </Link>
+        </ButtonGroup>
       </Navbar>
     </>
   );
