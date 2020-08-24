@@ -5,18 +5,27 @@ import Register from "./register";
 import PrivateRoute from "../utils/PrivateRoute";
 import UserProfile from "./userprofile";
 import HostHome from "./hostHome";
+import EditHome from "./editHome";
+import { PropertyProvider } from "../ContextApi/propertiesContext";
 const Routes = () => {
   return (
-    <>
-      <Route exact path="/login" component={Login} />
-      <Route exact path="/register" component={Register} />
-      <PrivateRoute exact path="/userprofile/:id" component={UserProfile} />
-      <PrivateRoute
-        exact
-        path="/userprofile/:id/add-home"
-        component={HostHome}
-      />
-    </>
+    <PropertyProvider>
+      <>
+        <Route exact path="/login" component={Login} />
+        <Route exact path="/register" component={Register} />
+        <PrivateRoute exact path="/userprofile/:id" component={UserProfile} />
+        <PrivateRoute
+          exact
+          path="/userprofile/:id/add-home"
+          component={HostHome}
+        />
+        <PrivateRoute
+          exact
+          path="/userprofile/:id/edit-home"
+          component={EditHome}
+        />
+      </>
+    </PropertyProvider>
   );
 };
 export default Routes;

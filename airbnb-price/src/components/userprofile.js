@@ -1,13 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useParams, useHistory, Link } from "react-router-dom";
 import { Card, Button } from "reactstrap";
 import { axiosWithAuth as axios } from "../utils/axiosWithAuth";
+import { PropertyContext } from "../ContextApi/propertiesContext";
 const UserProfile = () => {
   const [username, setUsername] = useState({
     username: "",
   });
 
-  const [properties, setProperties] = useState([]);
+  const [properties, setProperties] = useContext(PropertyContext);
 
   const { push } = useHistory();
   const { id } = useParams();
@@ -22,6 +23,7 @@ const UserProfile = () => {
       .delete(`/api/property/${id}`)
       .then((resp) => {
         console.log(resp);
+        setProperties(properties.filter((property) => property.id !== id));
       })
       .catch((err) => console.log(err));
   };
@@ -40,9 +42,10 @@ const UserProfile = () => {
       .get(`/api/users/${id}/property`)
       .then((resp) => {
         setProperties(resp.data);
+        console.log(properties, "userProfile");
       })
       .catch((err) => console.log(err));
-  }, [properties]);
+  }, [id]);
 
   console.log();
 

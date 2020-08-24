@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import { axiosWithAuth as axios } from "../utils/axiosWithAuth";
 import { Card, Button } from "reactstrap";
+import { PropertyContext } from "../ContextApi/propertiesContext";
 const HostHome = () => {
+  const [properties, setProperties] = useContext(PropertyContext);
   const { id } = useParams();
   const { push } = useHistory();
   const [host, setHost] = useState({
@@ -37,18 +39,10 @@ const HostHome = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios()
-      .get(`/api/users/${id}/property`)
+      .post(`/api/users/${id}/property`, host)
       .then((resp) => {
-        console.log(resp.data, "response");
-        if (resp.data) {
-          axios()
-            .post(`/api/users/${id}/property`, host)
-            .then((resp) => {
-              console.log(resp);
-              setHost([...host, ...resp.data]);
-            })
-            .catch((err) => console.log(err));
-        }
+        setProperties([...properties, resp.data]);
+        // console.log(resp);
       })
       .catch((err) => console.log(err));
 
