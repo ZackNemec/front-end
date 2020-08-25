@@ -8,9 +8,7 @@ const Register = () => {
     username: "",
     password: "",
   });
-  const [confirm, setConfirm] = React.useState({
-    confirmPassword: "",
-  });
+
   const [errors, setErrors] = React.useState({
     username: "",
     password: "",
@@ -29,10 +27,6 @@ const Register = () => {
       .required("Password is required")
       .min(8, "Password is too short, 8 characters minimum")
       .matches(/[a-zA-Z0-9]/, "can only use Latin Letters and Numerals"),
-    confirmPassword: yup
-      .string()
-      .required("Passwords must match")
-      .oneOf([yup.ref("password"), null], "Passwords must match"),
   });
   const validateChange = (e) => {
     yup
@@ -54,15 +48,9 @@ const Register = () => {
     validateChange(e);
     console.log(errors);
   };
-  const confirmHandler = (e) => {
-    setConfirm({ ...confirm, [e.target.name]: e.target.value });
-    e.persist();
-    console.log("input changed", e.target.value);
-    validateChange(e);
-  };
 
   const submit = (e) => {
-    formSchema.validate(regData, confirm).then(() => {
+    formSchema.validate(regData).then(() => {
       axios
         .post(
           "https://buildweek-airbnb.herokuapp.com/api/auth/register",
@@ -115,21 +103,7 @@ const Register = () => {
             <p className="error">{errors.password}</p>
           ) : null}
         </FormGroup>
-        <FormGroup>
-          <Label for="confirmPasswordInput">Confirm Password</Label>
-          <Input
-            type="password"
-            placeholder="Confirm Password"
-            name="confirmPassword"
-            id="confirmPasswordInput"
-            value={confirm.confirmPassword}
-            onChange={confirmHandler}
-          />
-          {errors.confirmPassword === regData.password ? null : (
-            <p className="error">{errors.confirmPassword}</p>
-          )}
-        </FormGroup>
-        <Button>Submit</Button>
+        <Button>Register</Button>
       </Form>
     </>
   );
