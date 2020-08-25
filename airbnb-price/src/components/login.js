@@ -55,7 +55,7 @@ const Login = () => {
             id="passwordInputLogin"
           />
         </FormGroup>
-        <Button>Login In</Button>
+        <Button>Login</Button>
       </Form>
     </>
   );
