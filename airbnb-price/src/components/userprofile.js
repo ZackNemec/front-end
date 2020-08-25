@@ -3,6 +3,7 @@ import { useParams, useHistory, Link } from "react-router-dom";
 import { Card, Button } from "reactstrap";
 import { axiosWithAuth as axios } from "../utils/axiosWithAuth";
 import { PropertyContext } from "../ContextApi/propertiesContext";
+
 const UserProfile = () => {
   const [username, setUsername] = useState({
     username: "",

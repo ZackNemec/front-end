@@ -7,7 +7,9 @@ import UserProfile from "./userprofile";
 import HostHome from "./hostHome";
 import EditHome from "./editHome";
 import ListingPage from "./listingPage";
+import ListingPageInd from "./listingPageInd";
 import { PropertyProvider } from "../ContextApi/propertiesContext";
+
 const Routes = () => {
   return (
     <PropertyProvider>
@@ -25,10 +27,11 @@ const Routes = () => {
           path="/userprofile/:id/edit-home"
           component={EditHome}
         />
-        <PrivateRoute 
-          exact 
-          path="/listing-page"
-          component={ListingPage}
+        <PrivateRoute exact path="/listing-page" component={ListingPage} />
+        <PrivateRoute
+          exact
+          path="/listing-page/:id"
+          component={ListingPageInd}
         />
       </>
     </PropertyProvider>

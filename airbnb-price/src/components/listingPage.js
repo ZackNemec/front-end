@@ -1,42 +1,52 @@
-import { React, useState, useContext } from "react";
-import { useParams } from "react-router-dom";
+import React, { useState, useContext } from "react";
+import { useHistory } from "react-router-dom";
 import { Card, Button } from "reactstrap";
-import { axiosWithAuth as axios } from "../utils/axiosWithAuth";
+import { axiosWithAuth } from "../utils/axiosWithAuth";
 import { ListingsContext } from "../ContextApi/listingsContext";
+import listingPage from "../styling/listingPage.css";
 
 const ListingPage = () => {
   const [details, setDetails] = useState("");
-  const [listings, setListings] = useContext(ListingsContext);
-  const { id } = useParams();
+  const { listings, setListings } = useContext(ListingsContext);
+  const history = useHistory();
 
   const viewListing = (id) => {
-    axios()
+    console.log("single listing", id);
+    axiosWithAuth()
       .get(`api/property/${id}`)
       .then((res) => {
         console.log("View Listing button clicked", res);
         setDetails(res.data);
+        history.push("/listing-page/" + id);
       })
       .catch((err) => console.log(err));
   };
-
   return (
     <div className="listings-container">
+      <h1
+        className="listings-title"
+        style={{
+          fontSize: "48px",
+          marginTop: "3%",
+        }}
+      >
+        Plan a different kind of getaway!
+      </h1>{" "}
       <div className="listings-wrapper">
-        Plan a different kind of getaway {listings.length}:
         {listings.map((listing) => {
-          console.log(listing);
           return (
             <div className="listing-card" key={listing.id}>
               <Card
+                className="hover-style"
                 style={{
-                  backgroundColor: "fuchsia",
+                  backgroundColor: "#b9d2ec40",
                 }}
               >
-                <p>Home Address/Neighborhood</p>
-                <p>Type of house</p>
-                <p># of beds/baths</p>
-                <p>min nights</p>
-                <p>Current total</p>
+                <h4>{`${listing.room_type} in ${listing.neighbourhood_group_cleansed}`}</h4>
+                <h6>{`${listing.bedrooms} bedroom(s) -- ${listing.bathrooms} bathroom(s)`}</h6>
+                <p>{`Minimum of: ${listing.minimum_nights} night(s)`}</p>
+                <p>{`Security deposit: ${listing.security_deposit}`}</p>
+                <p>{`Cleaning fee: ${listing.cleaning_fee}`}</p>
 
                 <Button
                   onClick={(e) => {
@@ -44,7 +54,7 @@ const ListingPage = () => {
                     viewListing(listing.id);
                   }}
                   style={{
-                    width: "35%",
+                    width: "50%",
                     backgroundColor: "lightcoral",
                   }}
                 >
