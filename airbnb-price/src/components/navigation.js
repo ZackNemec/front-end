@@ -14,7 +14,9 @@ const Navigation = () => {
         <Button>About</Button>
 
         {/* Link to listings */}
-        <Button>Listings</Button>
+        <Link to={"/listing-page"}>
+          <Button>Listings</Button>
+        </Link>
         <ButtonGroup>
           <Link to={"/login"}>
             {/*Link to Sign In page */}
