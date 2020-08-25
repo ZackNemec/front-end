@@ -49,6 +49,10 @@ const HostHome = () => {
     push(`/userprofile/${id}`);
   };
 
+  const BackButton = () => {
+    push(`/userProfile/${id}`);
+  };
+
   return (
     <div>
       <form onSubmit={handleSubmit}>
@@ -154,6 +158,7 @@ const HostHome = () => {
           </Button>
         </Card>
       </form>
+      <Button onClick={BackButton}>Cancel</Button>
     </div>
   );
 };
