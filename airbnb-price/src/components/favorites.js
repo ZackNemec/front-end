@@ -9,7 +9,7 @@ import {
   Row,
 } from "reactstrap";
 
-const Favorites = (props) => {
+const FavoritesCard = (props) => {
   return (
     <Container>
       <Row>
@@ -28,4 +28,4 @@ const Favorites = (props) => {
   );
 };
 
-export default Favorites;
+export default FavoritesCard;
