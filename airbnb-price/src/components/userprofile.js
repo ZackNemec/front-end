@@ -3,7 +3,7 @@ import { useParams, useHistory, Link } from "react-router-dom";
 import { Card, Button } from "reactstrap";
 import { axiosWithAuth as axios } from "../utils/axiosWithAuth";
 import { PropertyContext } from "../ContextApi/propertiesContext";
-import Favorites from "./favorites";
+import FavoritesCard from "./favorites";
 const UserProfile = () => {
   const [username, setUsername] = useState({
     username: "",
@@ -119,7 +119,7 @@ const UserProfile = () => {
             </div>
           );
         })}
-        <Favorites favorites array={favorites} />
+        <FavoritesCard favorites array={favorites} />
       </div>
     </div>
   );
