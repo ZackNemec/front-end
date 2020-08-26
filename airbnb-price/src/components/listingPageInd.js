@@ -1,14 +1,15 @@
 import React, { useContext } from "react";
 import { Card, Button } from "reactstrap";
 import { ListingsContext } from "../ContextApi/listingsContext";
+import { Link } from "react-router-dom";
 
-const ListingPageInd = () => {
-  const { listings, setListings } = useContext(ListingsContext);
+const ListingPageInd = ({location}) => {
+  const [ listing ] = location.state.listing
 
   return (
     <div className="single-listing">
-      {listings.map((listing, idx) => {
-        return (
+      {/* {listings.map((listing, idx) => {
+        return ( */}
           <div className="listing-card" key={listing.id}>
             <Card
               style={{
@@ -20,11 +21,8 @@ const ListingPageInd = () => {
               <p>{`Minimum of ${listing.minimum_nights} night(s)`}</p>
               <p>{`Security deposit: ${listing.security_deposit}`}</p>
               <p>{`Cleaning fee: ${listing.cleaning_fee}`}</p>
-
+              <Link to="/listing-page">
               <Button
-                onClick={(e) => {
-                  e.preventDefault();
-                }}
                 style={{
                   width: "25%",
                   backgroundColor: "lightcoral",
@@ -32,10 +30,11 @@ const ListingPageInd = () => {
               >
                 Back
               </Button>
+              </Link>
             </Card>
           </div>
-        );
-      })}
+        {/* );
+      })} */}
     </div>
   );
 };

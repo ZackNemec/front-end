@@ -1,25 +1,18 @@
 import React, { useState, useContext } from "react";
 import { useHistory } from "react-router-dom";
 import { Card, Button } from "reactstrap";
-import { axiosWithAuth } from "../utils/axiosWithAuth";
 import { ListingsContext } from "../ContextApi/listingsContext";
 import listingPage from "../styling/listingPage.css";
+import ListingPageInd from "./listingPageInd";
 
 const ListingPage = () => {
-  const [details, setDetails] = useState("");
   const { listings, setListings } = useContext(ListingsContext);
   const history = useHistory();
 
   const viewListing = (id) => {
     console.log("single listing", id);
-    axiosWithAuth()
-      .get(`api/property/${id}`)
-      .then((res) => {
-        console.log("View Listing button clicked", res);
-        setDetails(res.data);
-        history.push("/listing-page/" + id);
-      })
-      .catch((err) => console.log(err));
+    let indivListing = listings.filter((listing) => listing.id === id);
+    history.push(`/listing-page/${id}`, { listing: indivListing });
   };
   return (
     <div className="listings-container">
