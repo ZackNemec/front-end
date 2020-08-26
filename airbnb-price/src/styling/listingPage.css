@@ -15,7 +15,7 @@ body {
   margin: 0;
 }
 
-.app{
+.App{
   max-width: 1200px;
   margin: 0 auto;
 }
@@ -61,8 +61,4 @@ body {
 
 .card > p {
     margin-bottom: 1.1%;
-}
-
-.card > button {
-    margin-top: 5%;
 }

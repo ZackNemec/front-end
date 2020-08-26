@@ -14,6 +14,7 @@ export const ListingsProvider = (props) => {
       });
   }, [listings]);
 
+
   return (
     <ListingsContext.Provider value={{ listings, setListings }}>
       {props.children}
