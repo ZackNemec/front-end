@@ -28,7 +28,7 @@ const UserProfile = () => {
       })
       .catch((err) => console.log(err));
   };
-
+  const [favorites, setFavorites] = useState([]);
   useEffect(() => {
     axios()
       .get(`/api/users/${id}`)
