@@ -11,13 +11,7 @@ const UserProfile = () => {
 
   const [properties, setProperties] = useContext(PropertyContext);
 
-  const { push } = useHistory();
   const { id } = useParams();
-
-  const signOut = () => {
-    window.localStorage.removeItem("token");
-    push("/login");
-  };
 
   const deleteHouse = (id) => {
     axios()
@@ -58,10 +52,6 @@ const UserProfile = () => {
         <Link to={`/userprofile/${id}/add-home`}>
           <Button className="button">Host your home </Button>
         </Link>
-
-        <Button className="button" onClick={signOut}>
-          Sign Out
-        </Button>
       </div>
       <div>
         Your Hosted Homes {properties.length}:
