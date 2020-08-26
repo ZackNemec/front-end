@@ -3,6 +3,7 @@ import { useParams, useHistory, Link } from "react-router-dom";
 import { Card, Button } from "reactstrap";
 import { axiosWithAuth as axios } from "../utils/axiosWithAuth";
 import { PropertyContext } from "../ContextApi/propertiesContext";
+import Favorites from "./favorites";
 const UserProfile = () => {
   const [username, setUsername] = useState({
     username: "",
@@ -27,7 +28,7 @@ const UserProfile = () => {
       })
       .catch((err) => console.log(err));
   };
-
+  const [favorites, setFavorites] = useState([]);
   useEffect(() => {
     axios()
       .get(`/api/users/${id}`)
@@ -118,6 +119,7 @@ const UserProfile = () => {
             </div>
           );
         })}
+        <Favorites favorites array={favorites} />
       </div>
     </div>
   );
