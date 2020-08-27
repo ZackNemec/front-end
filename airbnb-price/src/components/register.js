@@ -1,7 +1,16 @@
 import React from "react";
-import { Form, FormGroup, Label, Input, Button } from "reactstrap";
+import {
+  CardTitle,
+  Card,
+  Form,
+  FormGroup,
+  Label,
+  Input,
+  Button,
+} from "reactstrap";
 import * as yup from "yup";
 import axios from "axios";
+import { useHistory } from "react-router-dom";
 
 const Register = () => {
   const [regData, setRegData] = React.useState({
@@ -48,7 +57,7 @@ const Register = () => {
     validateChange(e);
     console.log(errors);
   };
-
+  const history = useHistory();
   const submit = (e) => {
     formSchema.validate(regData).then(() => {
       axios
@@ -58,6 +67,7 @@ const Register = () => {
         )
         .then((results) => {
           console.log("returned data from post", results.data);
+          history.push("/login");
         })
         .catch((err) => {
           setServerError(`Username is take, please try ${regData.username}1`);
@@ -67,44 +77,61 @@ const Register = () => {
 
   return (
     <>
-      <Form
-        onSubmit={(e) => {
-          e.preventDefault();
-          submit();
-          console.log(regData);
+      <Card
+        style={{
+          margin: "12% auto",
+          width: "40%",
         }}
       >
-        {serverError ? <p className="error">{serverError}</p> : null}
-        <FormGroup>
-          <Label for="usernameInput">UserName</Label>
-          <Input
-            type="text"
-            placeholder="Username"
-            name="username"
-            id="usernameInput"
-            value={regData.username}
-            onChange={changeHandler}
-          />
-          {errors.username.length > 3 || errors.username.length < 15 ? (
-            <p className="error">{errors.username}</p>
+        <CardTitle style={{ margin: "1% auto" }}>Sign Up Here</CardTitle>
+        <Form
+          style={{ margin: "1% auto" }}
+          onSubmit={(e) => {
+            e.preventDefault();
+            submit();
+            console.log(regData);
+          }}
+        >
+          {serverError ? (
+            <p className="error" style={{ color: "red" }}>
+              {serverError}
+            </p>
           ) : null}
-        </FormGroup>
-        <FormGroup>
-          <Label for="passwordInput">Password</Label>
-          <Input
-            type="password"
-            placeholder="Password"
-            name="password"
-            id="passwordInput"
-            value={regData.password}
-            onChange={changeHandler}
-          />
-          {errors.password.length > 7 ? (
-            <p className="error">{errors.password}</p>
-          ) : null}
-        </FormGroup>
-        <Button>Register</Button>
-      </Form>
+          <FormGroup>
+            <Label for="usernameInput">UserName</Label>
+            <Input
+              type="text"
+              placeholder="Username"
+              name="username"
+              id="usernameInput"
+              value={regData.username}
+              onChange={changeHandler}
+            />
+            {errors.username.length > 3 || errors.username.length < 15 ? (
+              <p className="error" style={{ color: "red" }}>
+                {errors.username}
+              </p>
+            ) : null}
+          </FormGroup>
+          <FormGroup>
+            <Label for="passwordInput">Password</Label>
+            <Input
+              type="password"
+              placeholder="Password"
+              name="password"
+              id="passwordInput"
+              value={regData.password}
+              onChange={changeHandler}
+            />
+            {errors.password.length > 7 ? (
+              <p className="error" style={{ color: "red" }}>
+                {errors.password}
+              </p>
+            ) : null}
+          </FormGroup>
+          <Button>Register</Button>
+        </Form>
+      </Card>
     </>
   );
 };

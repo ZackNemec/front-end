@@ -63,7 +63,10 @@ const ListingPage = () => {
       >
         Plan a different kind of getaway!
       </h1>{" "}
-      <div className="listings-wrapper">
+      <div
+        className="listings-wrapper"
+        style={{ width: "80%", margin: "0 auto" }}
+      >
         {listings.map((listing) => {
           return (
             <div className="listing-card" key={listing.id}>

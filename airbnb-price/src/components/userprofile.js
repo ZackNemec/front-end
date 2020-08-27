@@ -3,7 +3,6 @@ import { useParams, useHistory, Link } from "react-router-dom";
 import { Card, Button } from "reactstrap";
 import { axiosWithAuth as axios } from "../utils/axiosWithAuth";
 import { PropertyContext } from "../ContextApi/propertiesContext";
-
 const UserProfile = () => {
   const [username, setUsername] = useState({
     username: "",
@@ -11,13 +10,7 @@ const UserProfile = () => {
 
   const [properties, setProperties] = useContext(PropertyContext);
 
-  const { push } = useHistory();
   const { id } = useParams();
-
-  const signOut = () => {
-    window.localStorage.removeItem("token");
-    push("/login");
-  };
 
   const deleteHouse = (id) => {
     axios()
@@ -28,7 +21,6 @@ const UserProfile = () => {
       })
       .catch((err) => console.log(err));
   };
-
   useEffect(() => {
     axios()
       .get(`/api/users/${id}`)
@@ -56,10 +48,6 @@ const UserProfile = () => {
         <Link to={`/userprofile/${id}/add-home`}>
           <Button className="button">Host your home </Button>
         </Link>
-
-        <Button className="button" onClick={signOut}>
-          Sign Out
-        </Button>
       </div>
       <div>
         Your Hosted Homes {properties.length}:

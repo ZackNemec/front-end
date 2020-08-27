@@ -25,7 +25,11 @@ const Login = () => {
       .then((res) => {
         console.log(res);
         window.localStorage.setItem("token", res.data.token);
-        history.push(`/userProfile/${res.data.user_id}`);
+        window.localStorage.setItem("user", res.data.user_id);
+        {
+          /* added by zack, let me know if this is alright */
+        }
+        history.push(`/userprofile/${res.data.user_id}`);
       })
       .catch((err) => console.log(err));
   };
