@@ -7,7 +7,6 @@ import UserProfile from "./userprofile";
 import HostHome from "./hostHome";
 import EditHome from "./editHome";
 import ListingPage from "./listingPage";
-import ListingPageInd from "./listingPageInd";
 import { PropertyProvider } from "../ContextApi/propertiesContext";
 
 const Routes = () => {
@@ -17,6 +16,7 @@ const Routes = () => {
         <Route exact path="/login" component={Login} />
         <Route exact path="/register" component={Register} />
         <PrivateRoute exact path="/userprofile/:id" component={UserProfile} />
+        <PrivateRoute exact path="/userprofile" component={UserProfile} />
         <PrivateRoute
           exact
           path="/userprofile/:id/add-home"
@@ -28,11 +28,6 @@ const Routes = () => {
           component={EditHome}
         />
         <PrivateRoute exact path="/listing-page" component={ListingPage} />
-        <PrivateRoute
-          exact
-          path="/listing-page/:id"
-          component={ListingPageInd}
-        />
       </>
     </PropertyProvider>
   );
