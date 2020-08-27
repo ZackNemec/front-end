@@ -10,6 +10,7 @@ import {
 } from "reactstrap";
 import * as yup from "yup";
 import axios from "axios";
+import { useHistory } from "react-router-dom";
 
 const Register = () => {
   const [regData, setRegData] = React.useState({
@@ -56,7 +57,7 @@ const Register = () => {
     validateChange(e);
     console.log(errors);
   };
-
+  const history = useHistory();
   const submit = (e) => {
     formSchema.validate(regData).then(() => {
       axios
@@ -66,6 +67,7 @@ const Register = () => {
         )
         .then((results) => {
           console.log("returned data from post", results.data);
+          history.push("/login");
         })
         .catch((err) => {
           setServerError(`Username is take, please try ${regData.username}1`);

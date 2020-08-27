@@ -29,7 +29,7 @@ const Login = () => {
         {
           /* added by zack, let me know if this is alright */
         }
-        history.push(`/userProfile/${res.data.user_id}`);
+        history.push(`/userprofile/${res.data.user_id}`);
       })
       .catch((err) => console.log(err));
   };
