@@ -40,8 +40,6 @@ const UserProfile = () => {
       .catch((err) => console.log(err));
   }, [id]);
 
-  console.log();
-
   return (
     <div className="userprofile">
       <div className="NavBar">
