@@ -1,22 +1,46 @@
 import React, { useContext } from "react";
 import { Card } from "reactstrap";
 import { ListingsContext } from "../ContextApi/listingsContext";
-import listingPage from "../styling/listingPage.css";
+import "../styling/listingPage.css";
+
+let localFavsList = window.localStorage.getItem("favs")
+  ? JSON.parse(window.localStorage.getItem("favs"))
+  : [];
+
+window.localStorage.setItem("favs", JSON.stringify(localFavsList));
 
 const ListingPage = () => {
   const { listings, setListings } = useContext(ListingsContext);
 
   const addFavorite = (id) => {
     let favListing = listings.filter((listing) => listing.id === id)[0];
-    let localStorageFavs = window.localStorage;
-    let storedFavs = JSON.parse(localStorageFavs.getItem("favs"));
+    favListing.favorited = true;
 
-    storedFavs.push(favListing);
-    localStorageFavs.setItem("favs", JSON.stringify(storedFavs));
+    let possibleDup = localFavsList.find((el) => el.id === favListing.id);
+
+    // Dom: get specific element clicked by matching listing id with class id
+    const heartIcon = document.getElementsByClassName(
+      `card-${favListing.id}`
+    )[0];
+
+    if (possibleDup) {
+      favListing.favorited = false;
+      localFavsList = localFavsList.filter((el) => el.id !== possibleDup.id);
+
+      window.localStorage.setItem("favs", JSON.stringify(localFavsList));
+    } else {
+      favListing.favorited = true;
+      localFavsList.push(favListing);
+      window.localStorage.setItem("favs", JSON.stringify(localFavsList));
+    }
+
+    if (favListing.favorited) {
+      heartIcon.style.fontWeight = "bold";
+    } else {
+      heartIcon.style.fontWeight = "normal";
+    }
 
     ////>> NOTES <<////
-
-    // listings are saving but showing up as --null-- in the array
 
     // Finish logic for onClick on fav icon
     // --> change font weight to bold red for bgColor change
@@ -51,9 +75,12 @@ const ListingPage = () => {
               >
                 <span className="favIcon-container">
                   <i
-                    className="far fa-heart fav-icon"
-                    style={{ color: "lightcoral" }}
-                    onClick={addFavorite}
+                    className={`far fa-heart fav-icon fa-2x card-${listing.id}`}
+                    style={{
+                      color: "lightcoral",
+                      fontWeight: `${listing.favorited ? "bold" : "normal"}`,
+                    }}
+                    onClick={() => addFavorite(listing.id)}
                   ></i>
                 </span>
                 <h4>{`${listing.room_type} in ${listing.neighbourhood_group_cleansed}`}</h4>

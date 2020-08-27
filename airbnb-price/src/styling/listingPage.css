@@ -62,3 +62,7 @@ body {
 .card > p {
     margin-bottom: 1.1%;
 }
+
+.favorited {
+  font-weight: bold;
+}

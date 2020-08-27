@@ -10,7 +10,6 @@ import {
   ListingsContext,
 } from "./ContextApi/listingsContext";
 
-window.localStorage.setItem("favs", JSON.stringify([]));
 
 function App() {
   return (

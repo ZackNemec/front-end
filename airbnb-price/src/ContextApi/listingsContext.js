@@ -10,7 +10,10 @@ export const ListingsProvider = (props) => {
     axiosWithAuth()
       .get("/api/property")
       .then((res) => {
-        setListings(res.data);
+        let list = res.data.map(listing=>{
+          return {...listing, favorited: false}
+        })
+        setListings(list);
       });
   }, [listings]);
 
