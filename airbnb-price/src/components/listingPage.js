@@ -10,7 +10,7 @@ let localFavsList = window.localStorage.getItem("favs")
 window.localStorage.setItem("favs", JSON.stringify(localFavsList));
 
 const ListingPage = () => {
-  const { listings, setListings } = useContext(ListingsContext);
+  const { listings } = useContext(ListingsContext);
 
   const addFavorite = (id) => {
     let favListing = listings.filter((listing) => listing.id === id)[0];
