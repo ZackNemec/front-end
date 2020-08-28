@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Card } from "reactstrap";
+import { Card, Col } from "reactstrap";
 import { ListingsContext } from "../ContextApi/listingsContext";
 import "../styling/listingPage.css";
 
@@ -52,32 +52,30 @@ const ListingPage = () => {
       >
         Plan a different kind of getaway!
       </h1>{" "}
-      <div
-        className="listings-wrapper"
-      >
+      <div className="listings-wrapper">
         {listings.map((listing) => {
           return (
-            <div className="listing-card" key={listing.id}>
-              <Card
-                className="hover-style"
-              >
-                <span className="favIcon-container">
-                  <i
-                    className={`far fa-heart fav-icon fa-2x card-${listing.id}`}
-                    style={{
-                      color: "lightcoral",
-                      fontWeight: `${listing.favorited ? "bold" : "normal"}`,
-                    }}
-                    onClick={() => addFavorite(listing.id)}
-                  ></i>
-                </span>
-                <h4>{`${listing.room_type} in ${listing.neighbourhood_group_cleansed}`}</h4>
-                <h6>{`${listing.bedrooms} bedroom(s) -- ${listing.bathrooms} bathroom(s)`}</h6>
-                <p>{`Minimum of: ${listing.minimum_nights} night(s)`}</p>
-                <p>{`Security deposit: ${listing.security_deposit}`}</p>
-                <p>{`Cleaning fee: ${listing.cleaning_fee}`}</p>
-              </Card>
-            </div>
+            <Col xs="12" sm="12" md="6" lg="4">
+              <div className="listing-card" key={listing.id}>
+                <Card className="hover-style">
+                  <span className="favIcon-container">
+                    <i
+                      className={`far fa-heart fav-icon fa-2x card-${listing.id}`}
+                      style={{
+                        color: "lightcoral",
+                        fontWeight: `${listing.favorited ? "bold" : "normal"}`,
+                      }}
+                      onClick={() => addFavorite(listing.id)}
+                    ></i>
+                  </span>
+                  <h4>{`${listing.room_type} in ${listing.neighbourhood_group_cleansed}`}</h4>
+                  <h6>{`${listing.bedrooms} bedroom(s) -- ${listing.bathrooms} bathroom(s)`}</h6>
+                  <p>{`Minimum of: ${listing.minimum_nights} night(s)`}</p>
+                  <p>{`Security deposit: ${listing.security_deposit}`}</p>
+                  <p>{`Cleaning fee: ${listing.cleaning_fee}`}</p>
+                </Card>
+              </div>
+            </Col>
           );
         })}
       </div>
