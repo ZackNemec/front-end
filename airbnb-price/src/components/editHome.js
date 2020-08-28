@@ -25,7 +25,6 @@ const EditHome = () => {
     axios()
       .get(`/api/property/${id}`)
       .then((resp) => {
-        console.log(resp, "response");
         setEditHome(resp.data);
         setUserId(resp.data.user_id);
       })
@@ -49,10 +48,8 @@ const EditHome = () => {
           .get(`/api/users/${userId}/property`)
           .then((resp) => {
             setProperties(resp.data);
-            console.log(resp, "response");
           })
           .catch((err) => console.log(err));
-        console.log(userId);
       })
       .catch((err) => console.log(err));
     push(`/userprofile/${userId}`);
@@ -63,14 +60,14 @@ const EditHome = () => {
   };
 
   return (
-    <div>
-      <h4 className="edit-hosted">Edit home</h4>
+    <div className="edit-container">
+      <h4 className="edit-hosted">Edit hosted home</h4>
       <form onSubmit={handleSubmit}>
-        <Card style={{ textAlign: "center", width: "40%", marginLeft: "32%" }}>
+        <Card className="edit-card">
           <label style={{ marginTop: "15px" }}>
-            Location:
+            Location:{" "}
             <input
-              style={{ marginLeft: "10px" }}
+              style={{ width: "45%" }}
               name="neighbourhood_group_cleansed"
               value={neighbourhood_group_cleansed || ""}
               onChange={handleChange}
@@ -78,42 +75,42 @@ const EditHome = () => {
             />
           </label>
 
-          <label style={{ marginRight: "50px" }}>
-            Number of Bedrooms:
+          <label>
+            Bedrooms:{" "}
             <select
-              style={{ marginLeft: "10px" }}
+              style={{ width: "15%" }}
               name="bedrooms"
               value={bedrooms || ""}
               onChange={handleChange}
               required
             >
-              <option value="none">Select Number of Bedrooms</option>
+              <option value="none">Select number of bedrooms</option>
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
             </select>
           </label>
 
-          <label style={{ marginRight: "50px" }}>
-            Number of Bathrooms:
+          <label>
+            Bathrooms:{" "}
             <select
-              style={{ marginLeft: "10px" }}
+              style={{ width: "15%" }}
               name="bathrooms"
               value={bathrooms || ""}
               onChange={handleChange}
               required
             >
-              <option value="none">Select Number of Bathrooms</option>
+              <option value="none">Select number of bathrooms</option>
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
             </select>
           </label>
 
-          <label style={{ marginRight: "40px" }}>
-            Minimum Stay:
+          <label>
+            Minimum nights required:{" "}
             <input
-              style={{ marginLeft: "10px" }}
+              style={{ width: "15%" }}
               name="minimum_nights"
               value={minimum_nights || ""}
               min="0"
@@ -122,27 +119,28 @@ const EditHome = () => {
             />
           </label>
 
-          <label style={{ marginRight: "35px" }}>
-            Type Of Housing:
+          <label>
+            Home type:{" "}
             <select
-              style={{ marginLeft: "10px" }}
+              style={{ width: "50%" }}
               name="room_type"
               value={room_type || ""}
               onChange={handleChange}
               required
             >
-              <option value="none">Select Housing Type</option>
+              <option value="none">Select home type</option>
               <option value="Apartment">Apartment</option>
               <option value="House (Shared with host)">
-                House (Shared with host)
+                House (shared with host)
               </option>
-              <option value="Entire House">Entire House</option>
+              <option value="Entire House">Entire house</option>
             </select>
           </label>
 
-          <label style={{ marginRight: "115px" }}>
-            Security Deposit Amount: $
+          <label>
+            Security deposit: $
             <input
+              style={{ width: "15%" }}
               name="security_deposit"
               value={security_deposit || ""}
               min="0"
@@ -151,9 +149,10 @@ const EditHome = () => {
             />
           </label>
 
-          <label style={{ marginRight: "90px" }}>
-            Cleaning Fee Amount: $
+          <label>
+            Cleaning fee: $
             <input
+              style={{ width: "15%" }}
               name="cleaning_fee"
               value={cleaning_fee || ""}
               min="0"
@@ -161,14 +160,14 @@ const EditHome = () => {
               required
             />
           </label>
-          <Button
-            style={{ width: "20%", marginLeft: "45%", marginBottom: "15px" }}
-          >
-            Edit Home
-          </Button>
+          <div className="edit-btns">
+            <Button className="cancel-edit" onClick={BackButton}>
+              Cancel
+            </Button>
+            <Button className="save-edit">Save changes</Button>
+          </div>
         </Card>
       </form>
-      <Button onClick={BackButton}>Cancel</Button>
     </div>
   );
 };

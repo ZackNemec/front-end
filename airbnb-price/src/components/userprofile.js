@@ -11,7 +11,6 @@ const UserProfile = () => {
   });
 
   const [properties, setProperties] = useContext(PropertyContext);
-
   const { id } = useParams();
 
   const deleteHouse = (id) => {
@@ -45,7 +44,6 @@ const UserProfile = () => {
     <div className="userprofile">
       <div className="NavBar">
         <h3 className="greeting-msg">Hello, {username.username}</h3>
-
         <Link to={`/userprofile/${id}/add-home`}>
           <Button className="new-listing">Host new home</Button>
         </Link>
@@ -57,20 +55,25 @@ const UserProfile = () => {
         {properties.map((property) => {
           return (
             <div key={property.id}>
-              <Card>
+              <Card className="hostHome-card">
                 <p>Location: {property.neighbourhood_group_cleansed}</p>
-                <p>Type of home: {property.room_type}</p>
+                <p>Home type: {property.room_type}</p>
                 <p>Bedrooms: {property.bedrooms}</p>
                 <p>Bathrooms: {property.bathrooms}</p>
-                <p>Minimum nights required: {property.minimum_nights} day(s)</p>
+                <p>
+                  Minimum nights required: {property.minimum_nights} night(s)
+                </p>
                 <p>Security deposit: ${property.security_deposit}</p>
                 <p>Cleaning fee: ${property.cleaning_fee}</p>
                 <p>
                   Current Total: $
                   {property.security_deposit + property.cleaning_fee}
                 </p>
-                <div className="hosted-card">
-                  <Link to={`/userprofile/${property.id}/edit-home`}>
+                <div className="hosted-btns">
+                  <Link
+                    className="editBtn-link"
+                    to={`/userprofile/${property.id}/edit-home`}
+                  >
                     <Button className="edit-listing">Edit home</Button>
                   </Link>
 
