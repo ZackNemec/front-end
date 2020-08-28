@@ -11,6 +11,7 @@ import {
 import * as yup from "yup";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
+import "../styling/register.css";
 
 const Register = () => {
   const [regData, setRegData] = React.useState({
@@ -70,19 +71,14 @@ const Register = () => {
           history.push("/login");
         })
         .catch((err) => {
-          setServerError(`Username is take, please try ${regData.username}1`);
+          setServerError(`Username is taken, please try ${regData.username}1`);
         });
     });
   };
 
   return (
     <>
-      <Card
-        style={{
-          margin: "12% auto",
-          width: "40%",
-        }}
-      >
+      <Card className="regCard">
         <CardTitle style={{ margin: "1% auto" }}>Sign Up Here</CardTitle>
         <Form
           style={{ margin: "1% auto" }}
@@ -98,7 +94,7 @@ const Register = () => {
             </p>
           ) : null}
           <FormGroup>
-            <Label for="usernameInput">UserName</Label>
+            <Label for="usernameInput">Username</Label>
             <Input
               type="text"
               placeholder="Username"

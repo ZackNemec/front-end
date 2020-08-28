@@ -3,7 +3,7 @@
   display: flex;
   justify-content: center;
   margin: auto;
-  border-bottom: 1px SOLID #ff5a5f;
+  border-bottom: 1px SOLID lightcoral;
 }
 .navbar div {
   display: flex;
@@ -35,18 +35,18 @@
 }
 .logButton:hover,
 .navText:hover {
-  color: #ff5a5f;
+  color: lightcoral;
 }
 .startButton.btn {
   color: black;
   background-color: white;
-  border-color: #ff5a5f;
+  border-color: lightcoral;
   border-width: 0.13em;
 }
 
 .startButton.btn:hover {
-  background-color: #ff5a5f;
-  border-color: #ff5a5f;
+  background-color: lightcoral;
+  border-color: lightcoral;
 }
 .buttonDrop > .dropdown-menu {
   display: none;
@@ -56,20 +56,20 @@ div.hideThisDiv {
 }
 
 .dropdown-toggle.btn.btn-secondary {
-  color: #ff5a5f;
-  border: 1px solid #ff5a5f;
+  color: lightcoral;
+  border: 1px solid lightcoral;
   background-color: white;
 }
 
 .dropdown-toggle.btn.btn-secondary:hover {
   color: white;
-  border: 1px solid #ff5a5f;
-  background-color: #ff5a5f;
+  border: 1px solid lightcoral;
+  background-color: lightcoral;
 }
 .dropdown-toggle.btn.btn-secondary::after {
   color: white;
-  border: 1px solid #ff5a5f;
-  background-color: #ff5a5f;
+  border: 1px solid lightcoral;
+  background-color: lightcoral;
 }
 .navBorder {
   border: 0px 0px 0.5px 0px;
