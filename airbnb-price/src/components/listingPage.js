@@ -39,17 +39,6 @@ const ListingPage = () => {
     } else {
       heartIcon.style.fontWeight = "normal";
     }
-
-    ////>> NOTES <<////
-
-    // Finish logic for onClick on fav icon
-    // --> change font weight to bold red for bgColor change
-    // --> change icon size to 2x
-
-    // NO Context API, could not find solve
-    // NO CRUD operations, not supported on Back End
-
-    // Deleted Favorites component related files and folders
   };
 
   return (
@@ -65,16 +54,12 @@ const ListingPage = () => {
       </h1>{" "}
       <div
         className="listings-wrapper"
-        style={{ width: "80%", margin: "0 auto" }}
       >
         {listings.map((listing) => {
           return (
             <div className="listing-card" key={listing.id}>
               <Card
                 className="hover-style"
-                style={{
-                  backgroundColor: "#b9d2ec40",
-                }}
               >
                 <span className="favIcon-container">
                   <i

@@ -35,7 +35,6 @@ const UserProfile = () => {
       .get(`/api/users/${id}/property`)
       .then((resp) => {
         setProperties(resp.data);
-        console.log(properties, "userProfile");
       })
       .catch((err) => console.log(err));
   }, [id, properties, setProperties]);
