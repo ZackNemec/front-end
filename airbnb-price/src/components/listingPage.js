@@ -53,9 +53,9 @@ const ListingPage = () => {
         Plan a different kind of getaway!
       </h1>{" "}
       <div className="listings-wrapper">
-        <Col xs="12" sm="12" md="6" lg="4">
-          {listings.map((listing) => {
-            return (
+        {listings.map((listing) => {
+          return (
+            <Col xs="12" sm="12" md="6" lg="4">
               <div className="listing-card" key={listing.id}>
                 <Card className="hover-style">
                   <span className="favIcon-container">
@@ -75,9 +75,9 @@ const ListingPage = () => {
                   <p>{`Cleaning fee: ${listing.cleaning_fee}`}</p>
                 </Card>
               </div>
-            );
-          })}
-        </Col>
+            </Col>
+          );
+        })}
       </div>
     </div>
   );
