@@ -53,11 +53,11 @@ const EditHome = () => {
         console.log(userId);
       })
       .catch((err) => console.log(err));
-    push(`/userProfile/${userId}`);
+    push(`/userprofile/${userId}`);
   };
 
   const BackButton = () => {
-    push(`/userProfile/${userId}`);
+    push(`/userprofile/${userId}`);
   };
 
   return (

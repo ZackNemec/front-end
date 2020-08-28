@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import {
+  NavbarText,
+  NavLink,
   Navbar,
   Button,
   ButtonGroup,
@@ -10,7 +12,7 @@ import {
   DropdownItem,
 } from "reactstrap";
 import { useHistory } from "react-router-dom";
-
+import Logo from "./assets/logo.PNG";
 const Navigation = () => {
   const userID = window.localStorage.getItem("user");
   const { push } = useHistory();
@@ -23,40 +25,40 @@ const Navigation = () => {
     push("/login");
   };
   const userProfile = () => {
-    history.push(`/userProfile/${userID}`);
+    history.push(`/userprofile/${userID}`);
   };
   return (
     <>
-      <Navbar color="light">
-        <h1>Title</h1>
-        {/*Link for home */}
-        <Button>Home</Button>
-
-        {/*Link to About*/}
-        <Button>About</Button>
-
-        {/* Link to listings */}
+      <Navbar className="navbar">
         <Link to={"/listing-page"}>
-          <Button>Listings</Button>
+          <NavbarText className="navText">Listings</NavbarText>
         </Link>
+        <NavLink href={"https://airbnb-marketing.netlify.app/team.html"}>
+          <NavbarText>Meet The Team</NavbarText>
+        </NavLink>
+        <NavLink href="https://airbnb-marketing.netlify.app/index.html">
+          <img className="logo" src={Logo} />
+        </NavLink>
+
         {token ? (
-          <ButtonDropdown isOpen={button} toggle={toggle}>
+          <ButtonDropdown
+            isOpen={button}
+            toggle={toggle}
+            className="buttonDrop"
+          >
             <DropdownToggle caret>User</DropdownToggle>
             <DropdownMenu>
-              <DropdownItem onClick={userProfile}>profile</DropdownItem>
+              <DropdownItem onClick={userProfile}>Profile</DropdownItem>
               <DropdownItem onClick={signOut}>Log Out</DropdownItem>
             </DropdownMenu>
           </ButtonDropdown>
         ) : (
-          <ButtonGroup>
+          <ButtonGroup className="buttonGroup">
             <Link to={"/login"}>
-              {/*Link to Sign In page */}
-              <Button>Sign In</Button>
+              <Button className="logButton">Log In</Button>
             </Link>
-
             <Link to={"/register"}>
-              {/* Link to register page*/}
-              <Button>Get Started</Button>
+              <Button className="startButton">Get Started</Button>
             </Link>
           </ButtonGroup>
         )}

@@ -50,7 +50,7 @@ const HostHome = () => {
   };
 
   const BackButton = () => {
-    push(`/userProfile/${id}`);
+    push(`/userprofile/${id}`);
   };
 
   return (

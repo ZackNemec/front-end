@@ -14,7 +14,8 @@ export const ListingsProvider = (props) => {
           return {...listing, favorited: false}
         })
         setListings(list);
-      });
+      })
+      .catch((err) => console.log(err));
   }, [listings]);
 
 
