@@ -3,7 +3,6 @@
   display: flex;
   justify-content: center;
   margin: auto;
-  flex-wrap: wrap-reverse;
 }
 .navbar div {
   display: flex;
@@ -21,6 +20,7 @@
 .navText,
 .logButton {
   color: #767676;
+  font-family: "Mulish", sans-serif;
 }
 .navbar div.loginDiv {
   width: 20%;
