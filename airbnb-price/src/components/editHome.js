@@ -3,9 +3,11 @@ import { Card, Button } from "reactstrap";
 import { PropertyContext } from "../ContextApi/propertiesContext";
 import { useParams, useHistory } from "react-router-dom";
 import { axiosWithAuth as axios } from "../utils/axiosWithAuth";
+import "../styling/editHome.css";
+
 const EditHome = () => {
   const [editHome, setEditHome] = useState([]);
-  const [ setProperties] = useContext(PropertyContext);
+  const [setProperties] = useContext(PropertyContext);
   const { push } = useHistory();
   const { id } = useParams();
   const [userId, setUserId] = useState("");
@@ -62,6 +64,7 @@ const EditHome = () => {
 
   return (
     <div>
+      <h4 className="edit-hosted">Edit home</h4>
       <form onSubmit={handleSubmit}>
         <Card style={{ textAlign: "center", width: "40%", marginLeft: "32%" }}>
           <label style={{ marginTop: "15px" }}>

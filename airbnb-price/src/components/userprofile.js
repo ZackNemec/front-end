@@ -44,37 +44,34 @@ const UserProfile = () => {
   return (
     <div className="userprofile">
       <div className="NavBar">
-        <h3 className="greeting-msg">Welcome back, {username.username}</h3>
+        <h3 className="greeting-msg">Hello, {username.username}</h3>
 
         <Link to={`/userprofile/${id}/add-home`}>
-          <Button className="new-listing">Add new listing</Button>
+          <Button className="new-listing">Host new home</Button>
         </Link>
       </div>
       <div>
         <h4 className="hosted-list">
-          Your Hosted Home(s): {properties.length}
+          Your hosted home(s): {properties.length}
         </h4>
         {properties.map((property) => {
           return (
             <div key={property.id}>
               <Card>
                 <p>Location: {property.neighbourhood_group_cleansed}</p>
-                <p>Type Of Housing: {property.room_type}</p>
-                <p>Number of Bedrooms: {property.bedrooms}</p>
-                <p>Number of Bathrooms: {property.bathrooms}</p>
-                <p>
-                  Minimum Amount of Nights Required for stay:{" "}
-                  {property.minimum_nights} Day(s)
-                </p>
-                <p>Security Deposit Amount: ${property.security_deposit}</p>
-                <p>Cleaning Fee Amount: ${property.cleaning_fee}</p>
+                <p>Type of home: {property.room_type}</p>
+                <p>Bedrooms: {property.bedrooms}</p>
+                <p>Bathrooms: {property.bathrooms}</p>
+                <p>Minimum nights required: {property.minimum_nights} day(s)</p>
+                <p>Security deposit: ${property.security_deposit}</p>
+                <p>Cleaning fee: ${property.cleaning_fee}</p>
                 <p>
                   Current Total: $
                   {property.security_deposit + property.cleaning_fee}
                 </p>
                 <div className="hosted-card">
                   <Link to={`/userprofile/${property.id}/edit-home`}>
-                    <Button className="edit-listing">Edit Housing</Button>
+                    <Button className="edit-listing">Edit home</Button>
                   </Link>
 
                   <Button
@@ -84,7 +81,7 @@ const UserProfile = () => {
                       deleteHouse(property.id);
                     }}
                   >
-                    Delete Housing
+                    Delete home
                   </Button>
                 </div>
               </Card>
