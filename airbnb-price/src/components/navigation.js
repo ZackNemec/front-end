@@ -1,4 +1,5 @@
 import React from "react";
+import "../styling/navigation.css";
 import { Link } from "react-router-dom";
 import {
   NavbarText,
@@ -34,7 +35,7 @@ const Navigation = () => {
           <NavbarText className="navText">Listings</NavbarText>
         </Link>
         <NavLink href={"https://airbnb-marketing.netlify.app/team.html"}>
-          <NavbarText>Meet The Team</NavbarText>
+          <NavbarText className="navText"> Meet The Team</NavbarText>
         </NavLink>
         <NavLink href="https://airbnb-marketing.netlify.app/index.html">
           <img className="logo" src={Logo} />

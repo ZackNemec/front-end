@@ -23,16 +23,6 @@ h3.NavBar {
   vertical-align: middle;
 }
 
-.NavBar {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  margin-top: 5px;
-  justify-content: center;
-  border-style: none;
-  border-width: 1px;
-}
-
 .button {
   margin-left: 5px;
 }
