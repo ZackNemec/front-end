@@ -43,15 +43,10 @@ const ListingPage = () => {
 
   return (
     <div className="listings-container">
-      <h1
-        className="listings-title"
-        style={{
-          fontSize: "48px",
-          marginTop: "3%",
-        }}
-      >
-        Plan a different kind of getaway!
-      </h1>{" "}
+      <div className="title-container">
+        <h1 className="listings-title"> Plan a different kind of getaway!</h1>
+        <img className="hero-image" src="https://unsplash.com/photos/hBh9JbyeCtg" alt="lake house"/>
+      </div>
       <div className="listings-wrapper">
         {listings.map((listing) => {
           return (
