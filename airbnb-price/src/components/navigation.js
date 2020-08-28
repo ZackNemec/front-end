@@ -67,7 +67,7 @@ const Navigation = () => {
         ) : (
           <div className="loginDiv">
             <Link to={"/login"}>
-              <NavbarText className="logButton">Log In</NavbarText>
+              <NavbarText className="logButton">Login</NavbarText>
             </Link>
             <Link to={"/register"}>
               <Button className="startButton">Get Started</Button>

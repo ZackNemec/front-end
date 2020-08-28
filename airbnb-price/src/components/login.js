@@ -46,7 +46,7 @@ const Login = () => {
     <>
       <Card className="loginCard">
         <CardTitle style={{ margin: "1% auto" }}>Login</CardTitle>
-        <Form onSubmit={submitLogin}>
+        <Form style={{ margin: "1% auto" }} onSubmit={submitLogin}>
           <FormGroup>
             <Label for="usernameinputlogin">Username</Label>
             <Input
