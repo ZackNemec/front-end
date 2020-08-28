@@ -43,7 +43,7 @@ const UserProfile = () => {
   return (
     <div className="userprofile">
       <div className="NavBar">
-        <h3 className="greeting-msg">Hello, {username.username}</h3>
+        <h3 className="greeting-msg">Hello, {username.username}!</h3>
         <Link to={`/userprofile/${id}/add-home`}>
           <Button className="new-listing">Host new home</Button>
         </Link>
