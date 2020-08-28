@@ -31,7 +31,7 @@ const Navigation = () => {
   return (
     <>
       <Navbar className="NavBar">
-        <div>
+        <div className={"divGroup"}>
           <Link className="link" to={"/listing-page"}>
             <NavbarText className="navText">Listings</NavbarText>
           </Link>
@@ -40,13 +40,13 @@ const Navigation = () => {
             <NavbarText className="navText"> Meet The Team</NavbarText>
           </NavLink>
         </div>
-        <div className="logodiv">
+        <div className="logodiv divGroup">
           <NavLink href="https://airbnb-marketing.netlify.app/index.html">
             <img className="logo" src={Logo} alt="Proxy Logo" />
           </NavLink>
         </div>
         {token ? (
-          <div className="dropButtonDiv">
+          <div className="dropButtonDiv divGroup">
             <div className="hideThisDiv">
               <Link>
                 <NavbarText className="logButton">Log In</NavbarText>
@@ -65,7 +65,7 @@ const Navigation = () => {
             </ButtonDropdown>
           </div>
         ) : (
-          <div className="loginDiv">
+          <div className="loginDiv divGroup">
             <Link to={"/login"}>
               <NavbarText className="logButton">Login</NavbarText>
             </Link>
