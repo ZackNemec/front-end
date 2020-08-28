@@ -1,0 +1,24 @@
+@import url("https://fonts.googleapis.com/css2?family=Mulish&family=Open+Sans&display=swap");
+.regCard.card {
+  margin: 12% auto;
+  width: 40%;
+  border-color: lightcoral;
+  box-shadow: 5px 10px 15px 0.5px lightgrey;
+}
+.card-title {
+  font-family: "Mulish", sans-serif;
+  font-size: large;
+  padding-bottom: 1%;
+  font-weight: bold;
+  color: #0098db;
+}
+.btn.btn-secondary {
+  color: white;
+  border: 1px solid lightcoral;
+  background-color: lightcoral;
+}
+.btn.btn-secondary:hover {
+  color: lightcoral;
+  border: 1px solid lightcoral;
+  background-color: white;
+}
