@@ -5,7 +5,7 @@ import { useParams, useHistory } from "react-router-dom";
 import { axiosWithAuth as axios } from "../utils/axiosWithAuth";
 const EditHome = () => {
   const [editHome, setEditHome] = useState([]);
-  const [properties, setProperties] = useContext(PropertyContext);
+  const [ setProperties] = useContext(PropertyContext);
   const { push } = useHistory();
   const { id } = useParams();
   const [userId, setUserId] = useState("");
@@ -53,11 +53,11 @@ const EditHome = () => {
         console.log(userId);
       })
       .catch((err) => console.log(err));
-    push(`/userProfile/${userId}`);
+    push(`/userprofile/${userId}`);
   };
 
   const BackButton = () => {
-    push(`/userProfile/${userId}`);
+    push(`/userprofile/${userId}`);
   };
 
   return (

@@ -23,7 +23,7 @@ const Navigation = () => {
     push("/login");
   };
   const userProfile = () => {
-    history.push(`/userProfile/${userID}`);
+    history.push(`/userprofile/${userID}`);
   };
   return (
     <>
@@ -43,7 +43,7 @@ const Navigation = () => {
           <ButtonDropdown isOpen={button} toggle={toggle}>
             <DropdownToggle caret>User</DropdownToggle>
             <DropdownMenu>
-              <DropdownItem onClick={userProfile}>profile</DropdownItem>
+              <DropdownItem onClick={userProfile}>Profile</DropdownItem>
               <DropdownItem onClick={signOut}>Log Out</DropdownItem>
             </DropdownMenu>
           </ButtonDropdown>
