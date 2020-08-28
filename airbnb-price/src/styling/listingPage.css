@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Mulish&family=Open+Sans&display=swap");
+
 * {
   box-sizing: border-box;
   text-rendering: optimizeLegibility;
@@ -15,13 +17,22 @@ body {
   margin: 0;
 }
 
-.App{
-  max-width: 1200px;
-  margin: 0 auto;
+h4,
+h6,
+p {
+  font-family: "Open Sans", sans-serif;
 }
 
-.listings-title{
-    text-align: center;
+.title-container {
+  border-radius: 10px;
+  background-image: url("https://unsplash.com/photos/hBh9JbyeCtg");
+}
+
+.listings-title {
+  text-align: center;
+  font-family: "Mulish", sans-serif;
+  font-size: 38px;
+  margin-top: 3%;
 }
 
 .listings-wrapper {
@@ -29,10 +40,6 @@ body {
   justify-content: space-between;
   flex-flow: wrap;
   padding-top: 1%;
-}
-
-.listing-card {
-  max-width: 30%;
 }
 
 .listing-card > .card {
@@ -49,19 +56,19 @@ body {
 }
 
 .hover-style:hover {
-  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
 
 .card > h4 {
-    padding-top: 2%;
+  padding-top: 2%;
 }
 
 .card > h6 {
-    padding: 1% 0 4% 0;
+  padding: 1% 0 4% 0;
 }
 
 .card > p {
-    margin-bottom: 1.1%;
+  margin-bottom: 1.1%;
 }
 
 .favorited {
