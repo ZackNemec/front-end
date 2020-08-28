@@ -23,6 +23,7 @@ const Navigation = () => {
   const token = window.localStorage.getItem("token");
   const signOut = () => {
     window.localStorage.removeItem("token");
+    window.localStorage.removeItem("user");
     push("/login");
   };
   const userProfile = () => {
