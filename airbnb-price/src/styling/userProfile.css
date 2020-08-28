@@ -1,0 +1,61 @@
+@import url("https://fonts.googleapis.com/css2?family=Mulish&family=Open+Sans&display=swap");
+
+.NavBar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 3%;
+}
+
+.greeting-msg {
+  font-size: 38px;
+  text-align: center;
+  font-family: mulish, sans-serif;
+  margin-right: 2%;
+}
+
+h4 {
+  font-family: mulish, sans-serif;
+  margin-right: 2%;
+}
+
+.new-listing.btn.btn-secondary {
+  background-color: lightcoral;
+  border: none;
+}
+
+.card {
+  text-align: "center";
+  width: "40%";
+  margin: 3% 35% 3% 35%;
+  padding: 1%;
+}
+
+.card > p {
+  margin: 2% 3% 0 3%;
+  font-size: 16px;
+  text-align: left;
+  font-family: "Open Sans", sans-serif;
+}
+
+.hosted-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.edit-listing.btn.btn-secondary {
+  margin: 10% 0 5% 10%;
+  background-color: white;
+  border: 1px solid lightcoral;
+  width: 100%;
+  color: lightcoral;
+}
+
+.delete-listing.btn.btn-secondary {
+  margin: 5% 2% 3% 0%;
+  background-color: lightcoral;
+  color: white;
+  border: none;
+  width: 48%;
+}

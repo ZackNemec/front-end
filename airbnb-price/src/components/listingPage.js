@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { Card, Col } from "reactstrap";
 import { ListingsContext } from "../ContextApi/listingsContext";
 import "../styling/listingPage.css";
+import HeroImage from "./assets/airbnbHero.jpg";
 
 let localFavsList = window.localStorage.getItem("favs")
   ? JSON.parse(window.localStorage.getItem("favs"))
@@ -44,8 +45,8 @@ const ListingPage = () => {
   return (
     <div className="listings-container">
       <div className="title-container">
-        <h1 className="listings-title"> Plan a different kind of getaway!</h1>
-        <img className="hero-image" src="https://unsplash.com/photos/hBh9JbyeCtg" alt="lake house"/>
+        <h1 className="listings-title">Explore near and far from ordinary 🏖</h1>
+        <img className="hero-image" src={HeroImage} alt="modern house"/>
       </div>
       <div className="listings-wrapper">
         {listings.map((listing) => {
