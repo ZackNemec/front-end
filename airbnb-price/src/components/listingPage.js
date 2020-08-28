@@ -19,7 +19,6 @@ const ListingPage = () => {
 
     let possibleDup = localFavsList.find((el) => el.id === favListing.id);
 
-    // Dom: get specific element clicked by matching listing id with class id
     const heartIcon = document.getElementsByClassName(
       `card-${favListing.id}`
     )[0];
@@ -27,7 +26,6 @@ const ListingPage = () => {
     if (possibleDup) {
       favListing.favorited = false;
       localFavsList = localFavsList.filter((el) => el.id !== possibleDup.id);
-
       window.localStorage.setItem("favs", JSON.stringify(localFavsList));
     } else {
       favListing.favorited = true;
@@ -45,8 +43,8 @@ const ListingPage = () => {
   return (
     <div className="listings-container">
       <div className="title-container">
-        <h1 className="listings-title">Explore near and far from ordinary 🏖</h1>
-        <img className="hero-image" src={HeroImage} alt="modern house"/>
+        <h1 className="listings-title">Explore near and far from ordinary</h1>
+        <img className="hero-image" src={HeroImage} alt="modern house" />
       </div>
       <div className="listings-wrapper">
         {listings.map((listing) => {
@@ -67,8 +65,8 @@ const ListingPage = () => {
                   <h4>{`${listing.room_type} in ${listing.neighbourhood_group_cleansed}`}</h4>
                   <h6>{`${listing.bedrooms} bedroom(s) -- ${listing.bathrooms} bathroom(s)`}</h6>
                   <p>{`Minimum of: ${listing.minimum_nights} night(s)`}</p>
-                  <p>{`Security deposit: ${listing.security_deposit}`}</p>
-                  <p>{`Cleaning fee: ${listing.cleaning_fee}`}</p>
+                  <p>{`Security deposit: $${listing.security_deposit}`}</p>
+                  <p>{`Cleaning fee: $${listing.cleaning_fee}`}</p>
                 </Card>
               </div>
             </Col>
