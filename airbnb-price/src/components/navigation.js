@@ -47,6 +47,11 @@ const Navigation = () => {
         </div>
         {token ? (
           <div className="dropButtonDiv">
+            <div className="hideThisDiv">
+              <Link>
+                <NavbarText className="logButton">Log In</NavbarText>
+              </Link>
+            </div>
             <ButtonDropdown
               isOpen={button}
               toggle={toggle}
@@ -70,6 +75,7 @@ const Navigation = () => {
           </div>
         )}
       </Navbar>
+      <div class="navBorder"></div>
     </>
   );
 };

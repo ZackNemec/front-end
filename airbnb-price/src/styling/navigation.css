@@ -3,6 +3,7 @@
   display: flex;
   justify-content: center;
   margin: auto;
+  border-bottom: 1px SOLID #ff5a5f;
 }
 .navbar div {
   display: flex;
@@ -22,7 +23,8 @@
   color: #767676;
   font-family: "Mulish", sans-serif;
 }
-.navbar div.loginDiv {
+.navbar div.loginDiv,
+.navbar div.dropButtonDiv {
   width: 20%;
   display: flex;
   justify-content: space-evenly;
@@ -48,4 +50,29 @@
 }
 .buttonDrop > .dropdown-menu {
   display: none;
+}
+div.hideThisDiv {
+  visibility: hidden;
+}
+
+.dropdown-toggle.btn.btn-secondary {
+  color: #ff5a5f;
+  border: 1px solid #ff5a5f;
+  background-color: white;
+}
+
+.dropdown-toggle.btn.btn-secondary:hover {
+  color: white;
+  border: 1px solid #ff5a5f;
+  background-color: #ff5a5f;
+}
+.dropdown-toggle.btn.btn-secondary::after {
+  color: white;
+  border: 1px solid #ff5a5f;
+  background-color: #ff5a5f;
+}
+.navBorder {
+  border: 0px 0px 0.5px 0px;
+  width: 80%;
+  color: black;
 }
