@@ -3,6 +3,8 @@ import { useParams, Link } from "react-router-dom";
 import { Card, Button } from "reactstrap";
 import { axiosWithAuth as axios } from "../utils/axiosWithAuth";
 import { PropertyContext } from "../ContextApi/propertiesContext";
+import "../styling/userProfile.css";
+
 const UserProfile = () => {
   const [username, setUsername] = useState({
     username: "",
@@ -42,25 +44,20 @@ const UserProfile = () => {
   return (
     <div className="userprofile">
       <div className="NavBar">
-        <h3>Welcome, {username.username}</h3>
+        <h3 className="greeting-msg">Welcome back, {username.username}</h3>
 
         <Link to={`/userprofile/${id}/add-home`}>
-          <Button className="button">Host your home </Button>
+          <Button className="new-listing">Add new listing</Button>
         </Link>
       </div>
       <div>
-        Your Hosted Homes {properties.length}:
+        <h4 className="hosted-list">
+          Your Hosted Home(s): {properties.length}
+        </h4>
         {properties.map((property) => {
           return (
             <div key={property.id}>
-              <Card
-                style={{
-                  textAlign: "center",
-                  width: "40%",
-                  marginLeft: "32%",
-                  marginBottom: "15px",
-                }}
-              >
+              <Card>
                 <p>Location: {property.neighbourhood_group_cleansed}</p>
                 <p>Type Of Housing: {property.room_type}</p>
                 <p>Number of Bedrooms: {property.bedrooms}</p>
@@ -75,31 +72,21 @@ const UserProfile = () => {
                   Current Total: $
                   {property.security_deposit + property.cleaning_fee}
                 </p>
-                <Link to={`/userprofile/${property.id}/edit-home`}>
+                <div className="hosted-card">
+                  <Link to={`/userprofile/${property.id}/edit-home`}>
+                    <Button className="edit-listing">Edit Housing</Button>
+                  </Link>
+
                   <Button
-                    style={{
-                      width: "35%",
-                      marginLeft: "10%",
-                      marginBottom: "15px",
+                    className="delete-listing"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      deleteHouse(property.id);
                     }}
                   >
-                    Edit Housing
+                    Delete Housing
                   </Button>
-                </Link>
-
-                <Button
-                  onClick={(e) => {
-                    e.preventDefault();
-                    deleteHouse(property.id);
-                  }}
-                  style={{
-                    width: "45%",
-                    marginLeft: "30%",
-                    marginBottom: "15px",
-                  }}
-                >
-                  Delete Housing
-                </Button>
+                </div>
               </Card>
             </div>
           );
