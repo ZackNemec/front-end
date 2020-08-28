@@ -38,7 +38,7 @@ const UserProfile = () => {
         setProperties(resp.data);
       })
       .catch((err) => console.log(err));
-  }, [id]);
+  }, [id, properties, setProperties]);
 
   return (
     <div className="userprofile">
