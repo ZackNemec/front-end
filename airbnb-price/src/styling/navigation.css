@@ -1,17 +1,51 @@
 @import url("https://fonts.googleapis.com/css2?family=Mulish&family=Open+Sans&display=swap");
-* {
+.NavBar.navbar {
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  flex-wrap: wrap-reverse;
 }
-.navbar {
+.navbar div {
+  display: flex;
+  align-items: center;
+  background: transparent;
+  justify-content: center;
+}
+.logodiv {
+  position: sticky;
 }
 .logo {
+  width: 6em;
+  flex-grow: 2;
 }
-.navText {
+.navText,
+.logButton {
+  color: #767676;
 }
-.buttonDrop {
-}
-.buttonGroup {
+.navbar div.loginDiv {
+  width: 20%;
+  display: flex;
+  justify-content: space-evenly;
 }
 .logButton {
+  margin: auto;
+  text-decoration: none;
 }
-.startButton {
+.logButton:hover,
+.navText:hover {
+  color: #ff5a5f;
+}
+.startButton.btn {
+  color: black;
+  background-color: white;
+  border-color: #ff5a5f;
+  border-width: 0.13em;
+}
+
+.startButton.btn:hover {
+  background-color: #ff5a5f;
+  border-color: #ff5a5f;
+}
+.buttonDrop > .dropdown-menu {
+  display: none;
 }
