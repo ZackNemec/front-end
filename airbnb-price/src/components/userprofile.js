@@ -3,13 +3,14 @@ import { useParams, Link } from "react-router-dom";
 import { Card, Button } from "reactstrap";
 import { axiosWithAuth as axios } from "../utils/axiosWithAuth";
 import { PropertyContext } from "../ContextApi/propertiesContext";
+import "../styling/userProfile.css";
+
 const UserProfile = () => {
   const [username, setUsername] = useState({
     username: "",
   });
 
   const [properties, setProperties] = useContext(PropertyContext);
-
   const { id } = useParams();
 
   const deleteHouse = (id) => {
@@ -42,64 +43,50 @@ const UserProfile = () => {
   return (
     <div className="userprofile">
       <div className="NavBar">
-        <h3>Welcome, {username.username}</h3>
-
+        <h3 className="greeting-msg">Hello, {username.username}!</h3>
         <Link to={`/userprofile/${id}/add-home`}>
-          <Button className="button">Host your home </Button>
+          <Button className="new-listing">Host new home</Button>
         </Link>
       </div>
       <div>
-        Your Hosted Homes {properties.length}:
+        <h4 className="hosted-list">
+          Your hosted home(s): {properties.length}
+        </h4>
         {properties.map((property) => {
           return (
             <div key={property.id}>
-              <Card
-                style={{
-                  textAlign: "center",
-                  width: "40%",
-                  marginLeft: "32%",
-                  marginBottom: "15px",
-                }}
-              >
+              <Card className="hostHome-card">
                 <p>Location: {property.neighbourhood_group_cleansed}</p>
-                <p>Type Of Housing: {property.room_type}</p>
-                <p>Number of Bedrooms: {property.bedrooms}</p>
-                <p>Number of Bathrooms: {property.bathrooms}</p>
+                <p>Home type: {property.room_type}</p>
+                <p>Bedrooms: {property.bedrooms}</p>
+                <p>Bathrooms: {property.bathrooms}</p>
                 <p>
-                  Minimum Amount of Nights Required for stay:{" "}
-                  {property.minimum_nights} Day(s)
+                  Minimum nights required: {property.minimum_nights} night(s)
                 </p>
-                <p>Security Deposit Amount: ${property.security_deposit}</p>
-                <p>Cleaning Fee Amount: ${property.cleaning_fee}</p>
+                <p>Security deposit: ${property.security_deposit}</p>
+                <p>Cleaning fee: ${property.cleaning_fee}</p>
                 <p>
                   Current Total: $
                   {property.security_deposit + property.cleaning_fee}
                 </p>
-                <Link to={`/userprofile/${property.id}/edit-home`}>
+                <div className="hosted-btns">
+                  <Link
+                    className="editBtn-link"
+                    to={`/userprofile/${property.id}/edit-home`}
+                  >
+                    <Button className="edit-listing">Edit home</Button>
+                  </Link>
+
                   <Button
-                    style={{
-                      width: "35%",
-                      marginLeft: "10%",
-                      marginBottom: "15px",
+                    className="delete-listing"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      deleteHouse(property.id);
                     }}
                   >
-                    Edit Housing
+                    Delete home
                   </Button>
-                </Link>
-
-                <Button
-                  onClick={(e) => {
-                    e.preventDefault();
-                    deleteHouse(property.id);
-                  }}
-                  style={{
-                    width: "45%",
-                    marginLeft: "30%",
-                    marginBottom: "15px",
-                  }}
-                >
-                  Delete Housing
-                </Button>
+                </div>
               </Card>
             </div>
           );

@@ -3,6 +3,8 @@ import { useParams, useHistory } from "react-router-dom";
 import { axiosWithAuth as axios } from "../utils/axiosWithAuth";
 import { Card, Button } from "reactstrap";
 import { PropertyContext } from "../ContextApi/propertiesContext";
+import "../styling/hostHome.css";
+
 const HostHome = () => {
   const [properties, setProperties] = useContext(PropertyContext);
   const { id } = useParams();
@@ -42,7 +44,6 @@ const HostHome = () => {
       .post(`/api/users/${id}/property`, host)
       .then((resp) => {
         setProperties([...properties, resp.data]);
-        // console.log(resp);
       })
       .catch((err) => console.log(err));
 
@@ -54,13 +55,14 @@ const HostHome = () => {
   };
 
   return (
-    <div>
+    <div className="hostHome-container">
+      <h4 className="newHome-title">Host new Home</h4>
       <form onSubmit={handleSubmit}>
-        <Card style={{ textAlign: "center", width: "40%", marginLeft: "32%" }}>
+        <Card className="newHome-card">
           <label style={{ marginTop: "15px" }}>
-            Location:
+            Location:{" "}
             <input
-              style={{ marginLeft: "10px" }}
+              style={{ width: "45%" }}
               name="neighbourhood_group_cleansed"
               value={neighbourhood_group_cleansed || ""}
               onChange={handleChange}
@@ -68,42 +70,42 @@ const HostHome = () => {
             />
           </label>
 
-          <label style={{ marginRight: "50px" }}>
-            Number of Bedrooms:
+          <label>
+            Bedrooms:{" "}
             <select
-              style={{ marginLeft: "10px" }}
+              style={{ width: "70%" }}
               name="bedrooms"
               value={bedrooms || ""}
               onChange={handleChange}
               required
             >
-              <option value="none">Select Number of Bedrooms</option>
+              <option value="none">Select number of bedrooms</option>
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
             </select>
           </label>
 
-          <label style={{ marginRight: "50px" }}>
-            Number of Bathrooms:
+          <label>
+            Bathrooms:{" "}
             <select
-              style={{ marginLeft: "10px" }}
+              style={{ width: "72%" }}
               name="bathrooms"
               value={bathrooms || ""}
               onChange={handleChange}
               required
             >
-              <option value="none">Select Number of Bathrooms</option>
+              <option value="none">Select number of bathrooms</option>
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
             </select>
           </label>
 
-          <label style={{ marginRight: "40px" }}>
-            Minimum Stay:
+          <label>
+            Minimum nights required:
             <input
-              style={{ marginLeft: "10px" }}
+              style={{ width: "15%" }}
               name="minimum_nights"
               value={minimum_nights || ""}
               min="0"
@@ -112,16 +114,16 @@ const HostHome = () => {
             />
           </label>
 
-          <label style={{ marginRight: "35px" }}>
-            Type Of Housing:
+          <label>
+            Home type:{" "}
             <select
-              style={{ marginLeft: "10px" }}
+              style={{ width: "50%" }}
               name="room_type"
               value={room_type || ""}
               onChange={handleChange}
               required
             >
-              <option value="none">Select Housing Type</option>
+              <option value="none">Select home type</option>
               <option value="Apartment">Apartment</option>
               <option value="House (Shared with host)">
                 House (Shared with host)
@@ -130,9 +132,10 @@ const HostHome = () => {
             </select>
           </label>
 
-          <label style={{ marginRight: "115px" }}>
-            Security Deposit Amount: $
+          <label>
+            Security deposit: $
             <input
+              style={{ width: "15%" }}
               name="security_deposit"
               value={security_deposit || ""}
               min="0"
@@ -141,9 +144,10 @@ const HostHome = () => {
             />
           </label>
 
-          <label style={{ marginRight: "90px" }}>
-            Cleaning Fee Amount: $
+          <label>
+            Cleaning fee: $
             <input
+              style={{ width: "15%" }}
               name="cleaning_fee"
               value={cleaning_fee || ""}
               min="0"
@@ -151,14 +155,14 @@ const HostHome = () => {
               required
             />
           </label>
-          <Button
-            style={{ width: "20%", marginLeft: "45%", marginBottom: "15px" }}
-          >
-            Add Home
-          </Button>
+          <div className="newHome-btns">
+            <Button className="cancel-newHome" onClick={BackButton}>
+              Cancel
+            </Button>
+            <Button className="add-newHome">Add home</Button>
+          </div>
         </Card>
       </form>
-      <Button onClick={BackButton}>Cancel</Button>
     </div>
   );
 };

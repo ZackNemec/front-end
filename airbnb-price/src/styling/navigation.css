@@ -1,5 +1,78 @@
 @import url("https://fonts.googleapis.com/css2?family=Mulish&family=Open+Sans&display=swap");
+.NavBar.navbar {
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  border-bottom: 1px SOLID lightcoral;
+}
+.navbar div {
+  display: flex;
+  align-items: center;
+  background: transparent;
+  justify-content: center;
+}
+.logodiv {
+  position: sticky;
+}
+.logo {
+  width: 6em;
+  flex-grow: 2;
+}
+.navText,
+.logButton {
+  color: #767676;
+  font-family: "Mulish", sans-serif;
+}
+.navbar div.loginDiv,
+.navbar div.dropButtonDiv {
+  width: 20%;
+  display: flex;
+  justify-content: space-evenly;
+}
+.logButton {
+  margin: auto;
+  text-decoration: none;
+}
+.logButton:hover,
+.navText:hover {
+  color: lightcoral;
+}
+.startButton.btn {
+  color: black;
+  background-color: white;
+  border-color: lightcoral;
+  border-width: 0.13em;
+}
 
-.navbar {
-  padding: 0;
+.startButton.btn:hover {
+  background-color: lightcoral;
+  border-color: lightcoral;
+}
+.buttonDrop > .dropdown-menu {
+  display: none;
+}
+div.hideThisDiv {
+  visibility: hidden;
+}
+
+.dropdown-toggle.btn.btn-secondary {
+  color: lightcoral;
+  border: 1px solid lightcoral;
+  background-color: white;
+}
+
+.dropdown-toggle.btn.btn-secondary:hover {
+  color: white;
+  border: 1px solid lightcoral;
+  background-color: lightcoral;
+}
+.dropdown-toggle.btn.btn-secondary::after {
+  color: white;
+  border: 1px solid lightcoral;
+  background-color: lightcoral;
+}
+.navBorder {
+  border: 0px 0px 0.5px 0px;
+  width: 80%;
+  color: black;
 }

@@ -1,4 +1,5 @@
 import React from "react";
+import "../styling/navigation.css";
 import { Link } from "react-router-dom";
 import {
   NavbarText,
@@ -29,40 +30,52 @@ const Navigation = () => {
   };
   return (
     <>
-      <Navbar className="navbar">
-        <Link to={"/listing-page"}>
-          <NavbarText className="navText">Listings</NavbarText>
-        </Link>
-        <NavLink href={"https://airbnb-marketing.netlify.app/team.html"}>
-          <NavbarText>Meet The Team</NavbarText>
-        </NavLink>
-        <NavLink href="https://airbnb-marketing.netlify.app/index.html">
-          <img className="logo" src={Logo} />
-        </NavLink>
+      <Navbar className="NavBar">
+        <div>
+          <Link className="link" to={"/listing-page"}>
+            <NavbarText className="navText">Listings</NavbarText>
+          </Link>
 
+          <NavLink href={"https://airbnb-marketing.netlify.app/team.html"}>
+            <NavbarText className="navText"> Meet The Team</NavbarText>
+          </NavLink>
+        </div>
+        <div className="logodiv">
+          <NavLink href="https://airbnb-marketing.netlify.app/index.html">
+            <img className="logo" src={Logo} alt="Proxy Logo" />
+          </NavLink>
+        </div>
         {token ? (
-          <ButtonDropdown
-            isOpen={button}
-            toggle={toggle}
-            className="buttonDrop"
-          >
-            <DropdownToggle caret>User</DropdownToggle>
-            <DropdownMenu>
-              <DropdownItem onClick={userProfile}>Profile</DropdownItem>
-              <DropdownItem onClick={signOut}>Log Out</DropdownItem>
-            </DropdownMenu>
-          </ButtonDropdown>
+          <div className="dropButtonDiv">
+            <div className="hideThisDiv">
+              <Link>
+                <NavbarText className="logButton">Log In</NavbarText>
+              </Link>
+            </div>
+            <ButtonDropdown
+              isOpen={button}
+              toggle={toggle}
+              className="buttonDrop"
+            >
+              <DropdownToggle caret>User</DropdownToggle>
+              <DropdownMenu>
+                <DropdownItem onClick={userProfile}>Profile</DropdownItem>
+                <DropdownItem onClick={signOut}>Log Out</DropdownItem>
+              </DropdownMenu>
+            </ButtonDropdown>
+          </div>
         ) : (
-          <ButtonGroup className="buttonGroup">
+          <div className="loginDiv">
             <Link to={"/login"}>
-              <Button className="logButton">Log In</Button>
+              <NavbarText className="logButton">Login</NavbarText>
             </Link>
             <Link to={"/register"}>
               <Button className="startButton">Get Started</Button>
             </Link>
-          </ButtonGroup>
+          </div>
         )}
       </Navbar>
+      <div class="navBorder"></div>
     </>
   );
 };

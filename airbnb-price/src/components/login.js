@@ -1,7 +1,16 @@
 import React, { useState } from "react";
-import { Form, FormGroup, Input, Label, Button } from "reactstrap";
+import {
+  CardTitle,
+  Card,
+  Form,
+  FormGroup,
+  Label,
+  Input,
+  Button,
+} from "reactstrap";
 import { useHistory } from "react-router-dom";
 import { axiosWithAuth as axios } from "../utils/axiosWithAuth";
+import "../styling/login.css";
 const Login = () => {
   const history = useHistory();
   const [login, setLogin] = useState({
@@ -35,31 +44,34 @@ const Login = () => {
 
   return (
     <>
-      <Form onSubmit={submitLogin}>
-        <FormGroup>
-          <Label for="usernameinputlogin">UserName</Label>
-          <Input
-            type="text"
-            placeholder="Username"
-            name="username"
-            value={username}
-            onChange={handleChange}
-            id="usernameInputLogin"
-          />
-        </FormGroup>
-        <FormGroup>
-          <Label for="passwordInputLogin">Password</Label>
-          <Input
-            type="password"
-            placeholder="Password"
-            onChange={handleChange}
-            name="password"
-            value={password}
-            id="passwordInputLogin"
-          />
-        </FormGroup>
-        <Button>Login</Button>
-      </Form>
+      <Card className="loginCard">
+        <CardTitle style={{ margin: "1% auto" }}>Login</CardTitle>
+        <Form style={{ margin: "1% auto" }} onSubmit={submitLogin}>
+          <FormGroup>
+            <Label for="usernameinputlogin">Username</Label>
+            <Input
+              type="text"
+              placeholder="Username"
+              name="username"
+              value={username}
+              onChange={handleChange}
+              id="usernameInputLogin"
+            />
+          </FormGroup>
+          <FormGroup>
+            <Label for="passwordInputLogin">Password</Label>
+            <Input
+              type="password"
+              placeholder="Password"
+              onChange={handleChange}
+              name="password"
+              value={password}
+              id="passwordInputLogin"
+            />
+          </FormGroup>
+          <Button>Login</Button>
+        </Form>
+      </Card>
     </>
   );
 };

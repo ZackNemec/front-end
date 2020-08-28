@@ -1,0 +1,44 @@
+@import url("https://fonts.googleapis.com/css2?family=Mulish&family=Open+Sans&display=swap");
+
+.edit-container {
+  margin-top: 3%;
+  display: block;
+  justify-content: center;
+}
+
+.edit-hosted {
+  text-align: center;
+  margin: 1% auto;
+}
+
+.edit-card.card {
+  width: 30%;
+  margin: 3% 35% 3% 35%;
+  padding: 1%;
+}
+
+label {
+  text-align: left;
+  margin-top: 3%;
+  margin-right: 1%;
+}
+
+.edit-btns {
+  display: flex;
+  justify-content: space-between;
+  margin: 3% 0;
+}
+
+.cancel-edit.btn.btn-secondary {
+  width: 45%;
+  background-color: white;
+  border: 1px solid lightcoral;
+  color: lightcoral;
+}
+
+.save-edit.btn.btn-secondary {
+  width: 45%;
+  background-color: lightcoral;
+  color: white;
+  border: none;
+}
