@@ -35,11 +35,9 @@ const Login = () => {
         console.log(res);
         window.localStorage.setItem("token", res.data.token);
         window.localStorage.setItem("user", res.data.user_id);
-
+        history.push(`/userprofile/${res.data.user_id}`);
+        window.location.reload(true);
         // added by zack, let me know if this is alright
-        history.push(`/userprofile/${res.data.user_id}`).then(() => {
-          window.location.reload();
-        });
       })
       .catch((err) => console.log(err));
   };
