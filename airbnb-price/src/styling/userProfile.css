@@ -22,6 +22,7 @@ h4.hosted-list {
 .new-listing.btn.btn-secondary {
   background-color: lightcoral;
   border: none;
+  color: white;
 }
 
 .hostHome-card.card {
